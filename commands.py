@@ -1,5 +1,5 @@
 from config import bot
-from function import *
+from utils import *
 
 
 @bot.message_handler(commands=["start", "help"])

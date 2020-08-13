@@ -1,5 +1,5 @@
 from config import *
-from commands import *
+from utils import *
 
 
 bot.polling()

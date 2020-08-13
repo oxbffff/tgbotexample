@@ -24,13 +24,12 @@ def add_task(msg):
 
 @bot.message_handler(commands=["list"])
 def task_list(msg):
-    with session_scope() as session:
-        tasks = get_tasks(msg.chat.id, count=50)
+    tasks = get_tasks(msg.chat.id, count=50)
 
-        if tasks:
-            bot.send_message(msg.chat.id, "In progress:\n" + tasks)
-        else:
-            bot.send_message(msg.chat.id, "No tasks added. Add first")
+    if tasks:
+        bot.send_message(msg.chat.id, "In progress:\n" + tasks)
+    else:
+        bot.send_message(msg.chat.id, "No tasks added. Add first")
 
 
 @bot.message_handler(regexp=r"\/del \d+")
@@ -57,10 +56,9 @@ def done_task(msg):
 
 @bot.message_handler(commands=["history"])
 def show_history(msg):
-    with session_scope() as session:
-        tasks = get_tasks(msg.chat.id, done=True)
+    tasks = get_tasks(msg.chat.id, done=True)
 
-        if tasks:
-            bot.send_message(msg.chat.id, "Done:\n" + tasks)
-        else:
-            bot.send_message(msg.chat.id, "No tasks added. Add first")
+    if tasks:
+        bot.send_message(msg.chat.id, "Done:\n" + tasks)
+    else:
+        bot.send_message(msg.chat.id, "No tasks added. Add first")

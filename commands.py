@@ -6,7 +6,7 @@ from utils import *
 def start(msg):
     with session_scope() as session:
         exist = session.query(User.id).filter_by(telegram_id=msg.chat.id).scalar()
-
+        
         if not exist:
             session.add(User(name=msg.from_user.first_name, telegram_id=msg.chat.id,),)
 
